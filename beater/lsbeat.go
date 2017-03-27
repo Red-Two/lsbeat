@@ -39,7 +39,7 @@ func (bt *Lsbeat) Run(b *beat.Beat) error {
 	logp.Info("lsbeat is running! Hit CTRL-C to stop it.")
 	bt.client = b.Publisher.Connect()
 	ticker := time.NewTicker(bt.config.Period)
-	counter := 1
+	// counter := 1
 	for {
 		now := time.Now()
 		bt.listDir(bt.config.Path, b.Name)  //call listDir
@@ -51,14 +51,14 @@ func (bt *Lsbeat) Run(b *beat.Beat) error {
 		case <-ticker.C:
 		}
 
-		event := common.MapStr{
-			"@timestamp": common.Time(time.Now()),
-			"type":       b.Name,
-			"counter":    counter,
-		}
-		bt.client.PublishEvent(event)
-		logp.Info("Event sent")
-		counter++
+		// event := common.MapStr{
+		// 	"@timestamp": common.Time(time.Now()),
+		// 	"type":       b.Name,
+		// 	"counter":    counter,
+		// }
+		// bt.client.PublishEvent(event)
+		// logp.Info("Event sent")
+		// counter++
 	}
 }
 

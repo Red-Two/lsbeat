@@ -4,7 +4,8 @@
 
 lsbeat:
   # Defines how often an event is sent to the output
-  period: 1s
+  period: 5s
+  path: "."
 
 #================================ General =====================================
 
@@ -29,10 +30,12 @@ lsbeat:
 #-------------------------- Elasticsearch output ------------------------------
 output.elasticsearch:
   # Array of hosts to connect to.
-  hosts: ["localhost:9200"]
-
+  hosts: ["http://localhost:9200"]
+  #template.enabled: true
+  #template.path: "lsbeat.teamplate.json"
+  #index: "lsbeat"
   # Optional protocol and basic auth credentials.
-  #protocol: "https"
+  #protocol: "http"
   #username: "elastic"
   #password: "changeme"
 
